@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 import todo_app.accounts.urls
+import todo_app.task.urls
 import todo_app.todoapp.urls
 from todo_app.authentication.views.login import LoginView
 
@@ -28,5 +29,6 @@ urlpatterns = [
     path('', include(todo_app.todoapp.urls)),
     # path('api/', include(todo_app.api.urls)),
     path('api/', include(todo_app.accounts.urls)),
+    path('api/', include(todo_app.task.urls)),
     path('login/', LoginView.as_view(), name='login'),
 ]

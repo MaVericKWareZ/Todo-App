@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from todo_app.accounts.serializers.account import AccountSerializer
+from todo_app.accounts.serializers.account import AccountReadSerializer
 
 from ..models.task import Task
 
 
 class TaskReadSerializer(serializers.ModelSerializer):
-    creator = AccountSerializer()
+    creator = AccountReadSerializer()
 
     class Meta:
         model = Task
@@ -18,15 +18,15 @@ class TaskWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
-        read_only_fields = 'creator'
+        read_only_fields = ('creator',)
 
     def create(self, validated_data):
         request = self.context.get('request')
-        recipe = super().create({
+        task = super().create({
             **validated_data,
             'creator': request.user,
         })
-        return recipe
+        return task
 
     def validate(self, attrs):
         attrs = super().validate(attrs)

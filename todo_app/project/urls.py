@@ -18,8 +18,10 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
 
+import todo_app.todoapp.urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
-    # path('task/', include(todo_app.task.urls)),
+    path('', include(todo_app.todoapp.urls)),
 ]

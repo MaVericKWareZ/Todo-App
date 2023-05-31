@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'storages',
 
     # Apps
+    'todo_app.todoapp.apps.TodoappConfig'
 ]
 
 MIDDLEWARE = [

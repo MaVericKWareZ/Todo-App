@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "todo-app"
+version = "0.1.0"
+description = "Django service to serve rest apis for a todo application"
+authors = ["Sarthak Mahapatra <sarthakchampion07@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{include = "todo_app"}]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "^4.2"
+djangorestframework = "^3.14.0"
+psycopg2 = "^2.9.6"
+django-filter = "^23.2"
+django-split-settings = "^1.2.0"
+pyyaml = "^6.0"
+django-cors-headers = "^3.14.0"
+pydantic = "^1.10.7"
+pynacl = "^1.5.0"
+djangorestframework-simplejwt = "^5.2.2"
+channels = {extras = ["daphne"], version = "^4.0.0"}
+django-model-utils = "^4.3.1"
+whitenoise = "^6.4.0"
+pillow = "^9.5.0"
+django-storages = "^1.13.2"
+boto3 = "^1.26.137"
+pytest = "^7.3.1"
+pytest-xdist = "^3.3.1"
+pytest-django = "^4.5.2"
+model-bakery = "^1.11.0"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.1"
+colorlog = "^6.7.0"
+django-debug-toolbar = "^4.1.0"
+
+[tool.isort]
+multi_line_output = 5
+line_length = 119
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "todo_app.project.settings"
+django_find_project = false
+python_files = "test_*.py"
+testpaths = ["todo_app"]
+filterwarnings = "ignore::DeprecationWarning:^(?!node\\.).*:"
+
+[tool.yapf]
+based_on_style = "google"
+align_closing_bracket_with_visual_indent = true
+coalesce_brackets = true
+column_limit = 119
+dedent_closing_brackets = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

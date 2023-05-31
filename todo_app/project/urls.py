@@ -18,11 +18,15 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
 
+import todo_app.accounts.urls
 import todo_app.todoapp.urls
+from todo_app.authentication.views.login import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
     path('', include(todo_app.todoapp.urls)),
-    # path('', include(todo_app.api.urls)),
+    # path('api/', include(todo_app.api.urls)),
+    path('api/', include(todo_app.accounts.urls)),
+    path('login/', LoginView.as_view(), name='login'),
 ]

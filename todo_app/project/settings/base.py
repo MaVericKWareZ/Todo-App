@@ -29,7 +29,11 @@ INSTALLED_APPS = [
     'storages',
 
     # Apps
-    'todo_app.todoapp.apps.TodoappConfig'
+    'todo_app.todoapp.apps.TodoappConfig',
+    # 'todo_app.api.apps.ApiConfig',
+    'todo_app.accounts.apps.AccountsConfig',
+    'todo_app.authentication.apps.AuthenticationConfig',
+    'todo_app.task.apps.TaskConfig',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = 'accounts.Account'
+AUTH_USER_MODEL = 'accounts.Account'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -114,3 +118,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda request: True,
 }
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+]

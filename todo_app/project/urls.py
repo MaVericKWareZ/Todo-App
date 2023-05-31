@@ -18,12 +18,9 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
 
-import todo_app.api.urls
-import todo_app.todoapp.urls
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
-    path('', include(todo_app.todoapp.urls)),
-    path('', include(todo_app.api.urls)),
+    # path('', include(todo_app.todoapp.urls)),
+    # path('', include(todo_app.api.urls)),
 ]
